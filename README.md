@@ -10,6 +10,16 @@
 
 > 界面里的 **Nairocy** 是原作者的产品名，仅作示例保留；部署后请自行替换 `src/page.js` / `src/account.js` / `src/index.js` 里的品牌串。
 
+## 截图
+
+| 登录 / 注册 / 找回 | 账户中心 |
+|---|---|
+| ![登录页](docs/screenshots/login-desktop.png) | ![账户中心](docs/screenshots/account-desktop.png) |
+
+<p align="center">
+  <img src="docs/screenshots/login-mobile.png" width="260" alt="移动端登录页">
+</p>
+
 ---
 
 ## 为什么又造一个
@@ -206,7 +216,10 @@ tools/
   mint-codes.mjs   批量发码 + 回读校验
   shots.mjs        多视口截图 + 布局断言（零依赖，Edge headless + CDP）
   measure.mjs      打印每块宽高，判断留白
+docs/
+  screenshots/     README 用的页面截图
 wrangler.jsonc 部署配置（D1 绑定 / 环境变量 / 路由）
+CONTRIBUTING.md 贡献前必读（项目定位与红线）
 ```
 
 ---
@@ -221,7 +234,13 @@ PORT=9411 node tools/shots.mjs "http://127.0.0.1:8787/" shots/login
 PORT=9412 node tools/shots.mjs "http://127.0.0.1:8787/account" shots/account "na_session=<64hex>"
 ```
 
-`WAIT=<ms>` 可延长首屏等待（默认 1400ms）。`node tools/measure.mjs <url> <cookie>` 打印每块宽高与块内子元素高度，用来判断留白是否过大。
+`WAIT=<ms>` 可延长首屏等待（默认 1400ms）。改拼版后用这个判断留白是否过大：
+
+```bash
+node tools/measure.mjs <url> [cookieName=value] [width]   # width 默认 1280
+```
+
+它会打印每个 `.b` 块的宽高/纵向位置，以及 `.b-hero` / `.b-profile` 内各子元素高度。
 
 ---
 

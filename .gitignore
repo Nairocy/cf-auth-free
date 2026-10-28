@@ -1,0 +1,26 @@
+# 本地 D1 状态（含真实用户数据，绝不提交）
+.wrangler/
+
+# 构建产物
+dist/
+
+# 兑换码清单（含明文码）
+codes-*.txt
+
+# 发码时临时落地的 SQL（含明文码）
+mint-*.sql
+
+# 截图（需要的话单独放 docs/ 下）
+shots/
+
+# 依赖（本项目零依赖，留作保险）
+node_modules/
+
+# 密钥
+.dev.vars
+.env
+.env.*
+
+# 系统垃圾
+.DS_Store
+Thumbs.db

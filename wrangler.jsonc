@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cf-auth-free",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-18",
+  "observability": { "enabled": true },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cf-auth-free",
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "vars": {
+    "APP_ORIGIN": "https://id.example.com",
+    "MAIL_FROM": "noreply@send.example.com",
+    "MAIL_FROM_NAME": "Nairocy",
+    "PBKDF2_ITER": "6000",
+    "TURNSTILE_SITE_KEY": ""
+  }
+  // 绑自定义域名时取消下面这段注释，并把 id.example.com 换成你的域名
+  // （域名必须已托管在同一个 Cloudflare 账号下）
+  // "routes": [
+  //   { "pattern": "id.example.com", "custom_domain": true }
+  // ]
+}
